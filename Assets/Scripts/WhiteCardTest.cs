@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackCardTest : MonoBehaviour
+public class WhiteCardTest : MonoBehaviour
 {    
-    private Deck blackDeck;
+    private Deck whiteDeck;
     private TMPro.TextMeshPro textBox;
     void Start()
     {
         textBox = gameObject.GetComponentsInChildren<TMPro.TextMeshPro>()[0];
-        if(textBox == null)
+        if (textBox == null)
         {
             Debug.Log("Could not find game component: TextMeshPro");
         }
-        blackDeck = new Deck("Assets/Docs/Black_Cards.txt");
-        if(blackDeck.GetError() != "")
+        whiteDeck = new Deck("Assets/Docs/White_Cards.txt");
+        if (whiteDeck.GetError() != "")
         {
             Debug.Log("Could not find Black_Cards.txt");
         }
-        blackDeck.Shuffle();
-        textBox.text = blackDeck.Draw();
+        whiteDeck.Shuffle();
+        textBox.text = whiteDeck.Draw();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        whiteDeck.Shuffle();
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            textBox.text = blackDeck.Draw();
+            textBox.text = whiteDeck.Draw();
         }
     }
 }

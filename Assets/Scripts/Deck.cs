@@ -46,8 +46,10 @@ public class Deck
 
     public string Draw()
     {
+        if(deckIndex > cards.Length-1)        
+            deckIndex = 0;
         string card = cards[deckIndex];
-        deckIndex = (deckIndex > cards.Length - 1) ? 0 : deckIndex + 1;        
+        deckIndex++;
         return card;
     }
 }
